@@ -2,11 +2,15 @@
     <div>
         <form class="create-post"
         @submit.prevent>
-            <h2>Создать пост</h2>
-            <input class="create-post__input" type="text" placeholder="Название"
-                v-model="post.title"
-            >
-            <textarea class="create-post__input" type="text" placeholder="Описание"
+            <h3>Создать пост</h3>
+            <my-input
+                class="create-post__input"
+                placeholder="Название"
+                v-model:value="post.title"
+            />
+            <textarea
+                class="create-post__input"
+                placeholder="Описание"
                 v-model="post.body"
             >
             </textarea>
@@ -19,11 +23,8 @@
     </div>
 </template>
 <script>
-import MyButton from './UI/MyButton.vue';
-
 
 export default {
-    components: { MyButton },
     data() {
         return {
             post: {
@@ -34,9 +35,8 @@ export default {
     },
     methods: {
         createPost() {
-            this.post.id = Date.now();
-            this.$emit("create", this.post);
-            console.log(this.post);
+            this.post.id = Date.now()
+            this.$emit("create", this.post)
             this.post = {
                 title: "",
                 body: ""

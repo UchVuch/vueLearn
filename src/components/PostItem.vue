@@ -5,19 +5,17 @@
             <div class="post__body"><strong>Описание:</strong> {{ post.body }}</div>
         </div>
         <div class="post__buttons">
-            <MyButton class="post__button-delete"
-                @click="deletePost"
+            <my-button class="post__button-delete"
+                @click="$emit('delete', post)"
             >
                 Удалить
-            </MyButton>
+            </my-button>
         </div>
     </div>
 </template>
 <script>
-import MyButton from './UI/MyButton.vue';
 
 export default {
-    components: { MyButton },
     props: {
         post: {
             type: Object,
@@ -25,9 +23,6 @@ export default {
         }
     },
     methods: {
-        deletePost() {
-
-        }
     },
 }
 </script>

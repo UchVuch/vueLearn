@@ -1,10 +1,22 @@
 <template>
 
-    <post-form
-        @create="createPost"
-    />
+    <my-dialog
+        v-model:show="showDialog"
+    >
+      <post-form
+          @create="createPost"
+      />
+    </my-dialog>
+
+    <h1 class="title">Страница с постами</h1>
+    <my-button
+      @click="openDialog"
+    >
+      Создать пост
+    </my-button>
     <post-list
         :posts="posts"
+        @delete="deletePost"
     />
 
     
@@ -23,12 +35,19 @@ export default {
                 { id: 2, title: 'Dark Souls 3', body: 'Лучшая игра фромов' },
                 { id: 3, title: 'Sekiro', body: 'Самая нестандартная игра из солсов' },
             ],
-
+            showDialog: false,
         }
     },
     methods: {
         createPost(post) {
+            this.showDialog = false
             this.posts.push(post)
+        },
+        deletePost(post) {
+            this.posts = this.posts.filter(p => p.id !== post.id)
+        },
+        openDialog() {
+            this.showDialog = true
         }
     }
 }
@@ -44,5 +63,9 @@ html {
 body {
     font-family: sans-serif;
     padding: 10px;
+}
+
+.title {
+    margin-bottom: 15px;
 }
 </style>
