@@ -20,7 +20,7 @@ export default {
 
 <style coped>
 .input {
-  resize: vertical;
+    width: 100%;
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid grey;
