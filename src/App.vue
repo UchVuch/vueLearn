@@ -39,28 +39,28 @@
             Загрузка постов...
         </p>
 
-        <div ref="observer" class="observer"></div>
-        <!-- <ul class="posts__pagination">
+        <!-- <div ref="observer" class="observer"></div> -->
+        <ul class="posts__pagination">
             <PageNumberItem
                 :totalPages="totalPages"
                 :page="page"
                 @changePage="changePageNumber"
             />
-        </ul> -->
+        </ul>
     </div>
 </template>
 <script>
-// import PageNumberItem from './components/PageNumberItem.vue'
+import PageNumberItem from './components/PageNumberItem.vue'
 import PostForm from './components/PostForm.vue'
 import PostList from './components/PostList.vue'
 
 export default {
-    components: { PostForm, PostList,  },
+    components: { PostForm, PostList, PageNumberItem },
 
     mounted() {
-    //    this.getPosts(this.limit, this.page)
-    this.loadMorePosts(10, this.page)
-       this.observeLoadPosts()
+       this.getPosts(this.limit, this.page)
+    // this.loadMorePosts(10, this.page)
+    //    this.observeLoadPosts()
     },
 
     data() {
@@ -158,9 +158,9 @@ export default {
     },
 
     watch: {
-        // page() {
-        //     this.getPosts(10, this.page)
-        // }
+        page() {
+            this.getPosts(10, this.page)
+        }
     }
 
 }
@@ -176,6 +176,8 @@ html {
 body {
     font-family: sans-serif;
     padding: 10px;
+    background-color: #1C2023;
+    color: #FFFFFF;
 }
 
 .title {

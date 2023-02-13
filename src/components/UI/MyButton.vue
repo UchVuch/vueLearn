@@ -18,6 +18,6 @@
     align-self: end;
     padding: 15px;
     color: white;
-    background-color: black;
+    background-color: #784cbe;
 }
 </style>
